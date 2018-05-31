@@ -1,0 +1,10 @@
+img {
+    max-width: 400px;
+}
+
+.tag{
+    float: left;
+    width: 10%;
+    color: rgb(201, 29, 143);
+    font-weight: bold;
+}
