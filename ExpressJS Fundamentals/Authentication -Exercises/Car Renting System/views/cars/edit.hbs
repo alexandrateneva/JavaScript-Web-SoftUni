@@ -1,0 +1,11 @@
+<h1>Edit a car</h1>
+<form method="post" action="/cars/edit/{{car._id}}">
+    <input name="make" value="{{car.make}}" /> 
+    <input name="model" value="{{car.model}}" />
+    <input name="pricePerDay" value="{{car.pricePerDay}}" />
+    <input name="description" value="{{car.description}}" />
+    <input name="imageUrl" value="{{car.imageUrl}}" />
+    <input name="color" value="{{car.color}}" />
+    IS RENTED: <input name="isRented" value="{{car.isRented}}" />
+    <input id="submit" type="submit" value="EDIT" />
+</form>

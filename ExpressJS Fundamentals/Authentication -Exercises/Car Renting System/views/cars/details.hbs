@@ -1,0 +1,20 @@
+<h1>Details</h1>
+<div class="car-container">
+    <section>
+        <img src="{{imageUrl}}" alt='car-image'/>
+        <a class="btn-rent" href="/cars/edit/{{_id}}">Edit</a>
+        <a class="btn-rent"5 href="/cars/rent/{{_id}}">Rent</a>
+    </section>
+    <section>
+        <h3>{{make}} {{model}}</h3>
+        <span><strong>Rented:</strong> {{rentersCount}}</span>
+        <br>
+        <span><strong>Price per day:</strong> {{pricePerDay}} BGN</span>
+        <br>
+        <span><strong>Description:</strong> {{description}}</span>
+        <br>
+        {{#if color}}
+        <span><strong>Color:</strong> {{color}}</span>
+        {{/if}}
+    </section>
+</div>

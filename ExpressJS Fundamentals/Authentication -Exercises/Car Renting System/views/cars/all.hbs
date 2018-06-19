@@ -1,0 +1,38 @@
+<h1>Cars</h1>
+<div class="cars-container">
+    <div class="car-container">
+        {{#if admin}} 
+          {{#each cars}} 
+        <section>
+            <a href="/cars/details/{{_id}}">
+                <img src="{{imageUrl}}" alt='car-image' />
+            </a>
+        </section>
+        <section class="info">
+            <strong>{{make}} {{model}}</strong>
+            <span class="rented">rented:
+                <strong>{{rentersCount}} </strong>
+                times
+            </span>
+        </section>
+          {{/each}} 
+        {{else}}
+          {{#each cars}} 
+            {{#unless isRented}}
+        <section>
+            <a href="/cars/details/{{_id}}">
+                <img src="{{imageUrl}}" alt='car-image' />
+            </a>
+        </section>
+        <section class="info">
+            <strong>{{make}} {{model}}</strong>
+            <span class="rented">rented:
+                <strong>{{rentersCount}} </strong>
+                times
+            </span>
+        </section>
+            {{/unless}}
+         {{/each}} 
+        {{/if}}
+    </div>
+</div>
