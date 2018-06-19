@@ -1,0 +1,63 @@
+<h1>Welcome to Doner Place!</h1>
+<p>We offer a wide variety of tasty doner kebab, cutosmized to your liking. Choose from different sizes of chicken, beef and
+    lamb and any topping you want. Place your order now!</p>
+<div class="products">
+{{#if isEmpty}}
+    <p>There are no products in database.</p>
+{{else}}
+
+   {{#if isAdmin}}
+    <h2>Chicken Doner</h2>
+    {{#if chickenDoners}}
+    {{#each chickenDoners}} 
+    {{>admin-product}}
+    {{/each}}
+    {{else}} <p>Sorry, but there are no chicken doners.</p> <br>
+    {{/if}}
+
+    <h2>Beef Doner</h2>
+    {{#if beefDoners}}
+    {{#each beefDoners}} 
+    {{>admin-product}}   
+    {{/each}}
+    {{else}} <p>Sorry, but there are no beef doners.</p> <br>
+    {{/if}}
+
+    <h2>Lamb Doner</h2>
+    {{#if lambDoners}}
+    {{#each lambDoners}}     
+    {{>admin-product}}
+    {{/each}}
+    {{else}} <p>Sorry, but there are no lamb doners.</p> <br>
+    {{/if}}
+
+  {{else}}
+    <h2>Chicken Doner</h2>
+    {{#if chickenDoners}}
+    {{#each chickenDoners}} 
+    {{>product}}
+    {{/each}}
+    {{else}} <p>Sorry, but there are no chicken doners.</p> <br>
+    {{/if}}
+
+    <h2>Beef Doner</h2>
+    {{#if beefDoners}}
+    {{#each beefDoners}} 
+    {{>product}}   
+    {{/each}}
+    {{else}} <p>Sorry, but there are no beef doners.</p> <br>
+    {{/if}}
+
+    <h2>Lamb Doner</h2>
+    {{#if lambDoners}}
+    {{#each lambDoners}}     
+    {{>product}}
+    {{/each}}
+    {{else}} <p>Sorry, but there are no lamb doners.</p> <br>
+    {{/if}}
+
+  {{/if}}
+
+{{/if}}
+
+</div>

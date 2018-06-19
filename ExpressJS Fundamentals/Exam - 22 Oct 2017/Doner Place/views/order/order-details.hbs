@@ -1,0 +1,55 @@
+<h1>Order details</h1>
+<div class="catalog">
+    <div class="column">
+        <img src="/{{product.imageUrl}}">
+    </div>
+    <div class="column">
+        <h2>{{product.category}} doner, {{product.size}}cm</h2>
+        <h3>{{order.date}}</h3>
+        <ul class="toppings">
+            {{#each order.toppings}}
+            <li>{{this}}</li>
+            {{/each}}
+        </ul>
+    </div>
+    <div class="status">
+        <div class="status-block">
+            <span class="progress-right"></span>
+            {{#if order.isPending}}
+              <span class="checkpoint current"></span>
+            {{else}}
+              <span class="checkpoint"></span>
+            {{/if}}
+            <br> Pending
+        </div>
+        <div class="status-block">
+            <span class="progress-left"></span>
+            <span class="progress-right"></span>
+            {{#if order.isInProgress}}
+              <span class="checkpoint current"></span>
+            {{else}}
+              <span class="checkpoint"></span>
+            {{/if}}
+            <br> In progress
+        </div>
+        <div class="status-block">
+            <span class="progress-left"></span>
+            <span class="progress-right"></span>
+            {{#if order.isInTransit}}
+              <span class="checkpoint current"></span>
+            {{else}}
+              <span class="checkpoint"></span>
+            {{/if}}
+            <br> In transit
+        </div>
+        <div class="status-block">
+            <span class="progress-left"></span>
+            {{#if order.isDelivered}}
+              <span class="checkpoint current"></span>
+            {{else}}
+              <span class="checkpoint"></span>
+            {{/if}}
+            <br> Delivered
+        </div>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+<div class="login-page">
+  <div class="form">
+      
+    {{#if globalError}}
+      <form action="/addCategory" method="POST" class="create-form">
+      <input type="text" name='name' value="{{name}}" />
+      <button type="submit">create</button>
+      </form>
+    {{else}}
+      <form action="/addCategory" method="POST" class="create-form">
+      <input type="text" name='name' placeholder="Name" />
+      <button type="submit">create</button>
+      </form>
+    {{/if}}
+   
+  </div>
+</div>

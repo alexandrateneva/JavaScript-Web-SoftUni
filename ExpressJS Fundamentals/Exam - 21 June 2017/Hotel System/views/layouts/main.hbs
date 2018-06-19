@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>My Demo Server</title>
+    <link href="/css/site.css" type="text/css" rel="stylesheet">
+
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <ul class="menu">
+                <li>
+                    <a href="/">Home</a>
+                </li>
+                <li>
+                    <a href="/about">About</a>
+                </li>
+                <li>
+                    <a href="/addHotel">Generate Hotel</a>
+                </li>
+                <li>
+                    <a href="/list">List</a>
+                </li>
+                <li>
+                    <a href="/addCategory">Add Categories</a>
+                </li>
+                {{#if currentUser}}
+                <li>{{currentUser.username}}</li>
+                <li>
+                    <a href="/profile/{{currentUser.username}}">Profile</a>
+                </li>
+                <li>
+                    <a href="/users/logout">Logout</a>
+                </li>
+                {{else}}
+                <li>
+                    <a href="/users/login">Login</a>
+                </li>
+                <li>
+                    <a href="/users/register">Register</a>
+                </li>
+                {{/if}}
+            </ul>
+        </header>
+        <main>
+            {{#if successMessage}}
+            <span>{{successMessage}}</span> 
+            {{/if}} 
+            
+            {{#if globalError}}
+            <span>{{globalError}}</span> 
+            {{/if}} 
+            
+            {{{body}}}
+        </main>
+    </div>
+    <script src="/js/jq.js"></script>
+    <script src="/js/js.js"></script>
+</body>
+
+</html>
