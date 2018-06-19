@@ -1,0 +1,19 @@
+<h1>Here are your memes</h1>
+
+<div class="container">
+
+    {{#each memes}}
+    <div class="meme">
+        <a href="/getDetails/{{this._id}}">
+            <img class="memePoster" src="{{this.memePath}}">
+        </a>
+    </div>
+    {{/each}}
+
+</div>
+
+{{#if noData}}
+<div id="errBox">
+    <h2 id="errMsg">No records match this find criteria.</h2>
+</div>
+{{/if}}

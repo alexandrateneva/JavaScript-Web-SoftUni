@@ -1,0 +1,22 @@
+<h1>Add New Genre</h1>
+<div class="container">
+    <form action="/addGenre" method="POST" enctype="multipart/form-data">
+        <label for="movieTitle">Title</label>
+        <input type="text" id="genreName" name="genreName" placeholder="The name of the genre">
+
+        <input type="submit" value="Submit">
+
+    </form>
+</div>
+
+{{#if isAdded}}
+    <div id="succssesBox">
+        <h2 id="succssesMsg">Genre Added</h2>
+    </div>
+{{/if}}
+
+{{#if alreadyExists}}
+    <div id="errBox">
+        <h2 id="errMsg">Тhere is already a genre with this name in the database.</h2>
+    </div>
+{{/if}}
