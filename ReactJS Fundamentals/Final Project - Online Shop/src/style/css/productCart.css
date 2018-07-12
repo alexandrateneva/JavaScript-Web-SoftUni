@@ -1,0 +1,118 @@
+ 
+  .cart-product {
+    height: 16em;
+    width: 50em;
+    font-family: 'Quicksand', sans-serif;
+    overflow: hidden;    
+    display: c;
+    flex-direction: column;
+    margin: .5em;
+    padding: 1em;
+    background-color: white;
+    transition: transform 300ms bounce;
+  }
+  
+  .cart-items {
+    display: flex;;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+  }
+  
+  .cart-items-title {
+    text-align: center;
+  }
+  
+  #cart-product-img {
+    height: 10em;   
+    margin-left: 20px;
+  }
+  
+  #cart-product-name {
+    border-bottom: 1px solid lightgrey;
+    padding: 1em 0 0;
+    font-size: 1.5em;
+    font-family: 'Lato', sans-serif;
+    margin: .5em 0;
+  }
+  
+  #cart-product-description {
+    font-size: 1em;
+    font-family: 'Lato', sans-serif;
+    color: grey;
+    font-weight: lighter;
+    margin: 0;
+  }
+  
+  #cart-product-price {
+    font-size: 1em;
+  }
+  
+  #btn-delete-cart-product {
+    border: 1px solid #C71585;
+    background: transparent;
+    color:  #C71585;
+    transition: 250ms background ease-in;  
+    display: inline-block;
+  }
+  #btn-delete-cart-product:hover, #btn-delete-cart-product:focus {
+    background:  #C71585;
+    color: white;
+    transition: 250ms background ease-in;
+  }
+
+  #btn-order {
+    border: 3px solid #C71585;
+    background: transparent;
+    color:  #C71585;
+    transition: 250ms background ease-in;  
+    font-size: 18px;
+    border-radius: 12px;
+    width: 200px;  
+  }
+  #btn-order:hover, #btn-order:focus {
+    background:  #C71585;
+    color: white;
+    transition: 250ms background ease-in;
+  }
+
+  #order {
+    margin: .5em;
+    padding: 1em;
+    text-align: center
+  }
+
+  .price-add {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  i {
+    /* color: lightgrey; */
+    transition: 0.5s;
+  }
+  
+  i:hover {
+    color: grey;
+    transition: 0.5s;
+    cursor: pointer;
+  }
+
+  .order-details {
+    display: inline-block;      
+    margin-left: 30px;  
+    font-size: 1em;  
+  }
+  
+  #order-box {
+    width: 50em;
+    font-family: 'Quicksand', sans-serif;
+    overflow: hidden;    
+    display: c;
+    flex-direction: column;
+    margin: .5em;
+    padding: 1em;
+    background-color: white;
+    transition: transform 300ms bounce;
+  }

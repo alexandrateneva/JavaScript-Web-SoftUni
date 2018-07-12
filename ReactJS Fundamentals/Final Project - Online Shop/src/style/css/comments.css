@@ -1,0 +1,41 @@
+#commentForm>* {
+    display: block;
+    width: 400px;
+    box-sizing: border-box;
+  }
+  
+  #commentForm>label {
+    margin-top: 10px;
+  }
+  
+  #commentForm>textarea {
+    resize: none;
+    height: 6em;
+  }
+  
+  #commentForm>input[type="submit"] {
+    margin-top: 10px;
+    width: 125px;
+  }
+
+  .info{
+    border-bottom: 1px solid gray;
+  }
+
+  .comment-profile{
+    margin-left: 300px;
+    margin-right: 300px; 
+    background-color: white;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+  }
+
+  .comment-profile p{
+    color: #C71585;
+    font-weight: bold;
+  }
+
+  .comments-profile i{
+    display: block;
+    text-align: center;
+  }

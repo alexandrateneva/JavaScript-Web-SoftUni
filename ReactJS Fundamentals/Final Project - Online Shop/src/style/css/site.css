@@ -1,0 +1,80 @@
+body {
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.content {
+  background-color: #F9F6F6;
+}
+
+.first-header {
+  background: url('../images/rabbit-2174679_1920\ Cropped.jpg');
+}
+
+.second-header {
+  background: url('../images/woman-918529_1920\ Cropped.jpg');
+}
+
+.third-header {
+  background: url('../images/dog-1561943_1920\ Cropped.jpg');
+}
+
+.first-header, .second-header, .third-header {
+  display: flex;
+  flex-direction: column;
+  background-size: cover;
+  background-position: center;
+}
+
+.footer {
+  height: 3em;
+  background-color: black;
+  color: #FFF;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: lighter;
+}
+
+h1, h3 {   
+  text-align: center;
+  font-family: "Arial Black", Gadget, sans-serif;
+  color: #C71585
+}
+h2 {   
+  text-align: center; 
+  font-family: 'Quicksand', sans-serif;
+}
+h5 {   
+  color: #C71585; 
+  font-family: 'Quicksand', sans-serif;
+}
+
+.categories {
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  text-align: center
+}
+
+.like-icon-off {
+  background-color: #FFF;
+  color: lightgray;
+}
+.like-icon-off:hover {
+  background-color: #FFF;
+  color: #C71585;
+}
+
+.like-icon-on {
+  background-color: #FFF;
+  color: #C71585;
+}
+.like-icon-on:hover {
+  background-color: #FFF;
+  color: lightgray;
+}
+

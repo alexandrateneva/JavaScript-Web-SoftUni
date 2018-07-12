@@ -1,0 +1,42 @@
+.delete-container{
+    text-align: center;    
+    margin-top: 40px;
+    height: 300px;
+    padding: 0.25rem;
+}
+
+.danger {
+    border: 1px solid #C71585;
+    background: transparent;
+    color:  #C71585;
+    display: block;
+    margin: 1rem auto;
+    width: 100px;
+    padding: 0.25rem;
+    transition: 250ms background ease-in;  
+    border-radius: 50%;
+    display: inline-block
+  }
+  .danger:hover, .danger:focus {
+    background:  #C71585;
+    color: black;
+    transition: 250ms background ease-in;
+  }
+
+  .calm {
+    border: 1px solid #C71585;
+    background: transparent;
+    color: rgba(0, 0, 0, 0.7);
+    display: block;
+    margin: 1rem auto;
+    width: 100px;
+    padding: 0.25rem;
+    transition: 250ms background ease-in;  
+    border-radius: 50%;
+    display: inline-block
+  }
+  .calm:hover, .calm:focus {
+    background: white;
+    color: black;
+    transition: 250ms background ease-in;
+  }
