@@ -6,12 +6,14 @@ import addProductToCart from '../../utils/addProductToCart';
 import likeAndDislikeProduct from '../../utils/likeAndDislikeProduct';
 import ShortProduct from '../partials/ShortProduct';
 import Comments from '../comments/Comments';
+import Loader from '../common/Loader';
 
 class ProductDetails extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
+    this.state = {      
+      loading: true,
       productId: '',
       product: '',
       similarProducts: [],
@@ -25,6 +27,11 @@ class ProductDetails extends Component {
   }
 
   componentWillReceiveProps(newProps) {
+    if(this.props.match.params.id !== this.state.productId){
+      this.setState({
+        loaded: true
+      });
+    }   
     this.getData();
   }
 
@@ -40,13 +47,14 @@ class ProductDetails extends Component {
               productId: product._id,
               similarProducts: similarProducts,
               likeBtn: (index >= 0) ? 'like-icon-on' : 'like-icon-off',
-              likes: product.likes.length
+              likes: product.likes.length,
+              loaded: false
             });
           });
       });
   }
 
-  setContent(obj){
+  setContent(obj) {
     this.setState(obj);
   }
 
@@ -61,6 +69,10 @@ class ProductDetails extends Component {
       <a onClick={() => likeAndDislikeProduct(this.state.product, this.props.match.params.id, this.setContent.bind(this), this.props)}><Icon small className={this.state.likeBtn}>favorite</Icon></a>
       <h5>{this.state.likes} Likes</h5>
     </div>);
+
+    if (this.state.loaded === true || this.state.loaded === undefined) {
+      return <div className='load'><Loader /></div>
+    }
 
     return (<div className='show-product'>
       <div className='item-wrapper'>

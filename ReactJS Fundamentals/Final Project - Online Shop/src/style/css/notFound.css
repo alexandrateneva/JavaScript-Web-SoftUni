@@ -1,0 +1,21 @@
+.notFound-container{
+    text-align: center;    
+    margin-top: 40px;
+    height: 300px;
+    padding: 0.25rem;
+}
+
+.btn-back {
+    border: 3px solid #C71585;
+    background: transparent;
+    color:  #C71585;
+    transition: 250ms background ease-in;  
+    font-size: 18px;
+    border-radius: 12px;
+    width: 200px;  
+  }
+  .btn-back:hover, .btn-back:focus {
+    background:  #C71585;
+    color: white;
+    transition: 250ms background ease-in;
+  }

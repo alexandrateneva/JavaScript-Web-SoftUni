@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import requester from '../../utils/requester';
 import ProfileProduct from '../partials/ProfileProduct';
 import ProfileComment from '../partials/ProfileComment';
+import Loader from '../common/Loader';
 
 class Profile extends Component {
   constructor () {
     super();
 
     this.state = {
+      loading: true,
       likedProducts: [],
       commentedProducts: []
     };
@@ -20,13 +22,18 @@ class Profile extends Component {
           .then(commentedProducts => {
             this.setState({
               likedProducts: likedProducts,
-              commentedProducts: commentedProducts
+              commentedProducts: commentedProducts,
+              loaded: false
             });
           });
       });
   }
 
   render () {
+    if (this.state.loaded === true || this.state.loaded === undefined) {
+      return <div className='load'><Loader /></div>;
+    }
+    
     return (
       <div>
         <h2>Products you liked:</h2>

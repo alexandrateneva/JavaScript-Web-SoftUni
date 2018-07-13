@@ -23,7 +23,7 @@ class Register extends Component {
     register = (e) => {
         e.preventDefault();
         if (this.state.username === '' || this.state.password === '') {
-            return notification.push('error', 'Please, fill in the username and password.');
+            return notification.push('error', 'Username and password are required.');
         }
         if (this.state.password !== this.state.repeatPass) {
             return notification.push('error', 'Password and repeated password don`t match.');

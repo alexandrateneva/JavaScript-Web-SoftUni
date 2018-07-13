@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import requester from '../../utils/requester';
 import notification from '../../utils/notification';
 import '../../style/css/delete.css';
@@ -22,6 +22,10 @@ class DeleteCategory extends Component {
     }
 
     render() {
+        if(localStorage.username !== 'admin'){
+            return <Redirect to='/home' />
+        }
+
         return (<div className='delete-container'>
         <h5>Are you sure you want to delete this category, maybe products related to it?</h5>
         <button className='danger' onClick={this.deleteCategory}>Yes</button>

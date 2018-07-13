@@ -30,6 +30,10 @@
 img {
   height: 15em;   
   margin-left: 20px;
+  /* max-width:15em;
+  max-height:15em;
+  width: auto;
+  height: auto; */
 }
 
 #product-name {

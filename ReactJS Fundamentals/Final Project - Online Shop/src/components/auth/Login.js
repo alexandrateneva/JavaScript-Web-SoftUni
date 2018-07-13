@@ -22,7 +22,7 @@ class Login extends Component {
     login = (e) => {
         e.preventDefault();
         if (this.state.username === '' || this.state.password === '') {
-            return notification.push('error', 'Please, fill in the username and password.');
+            return notification.push('error', 'Username and password are required.');
         }
 
         requester.login({ username: this.state.username, password: this.state.password })

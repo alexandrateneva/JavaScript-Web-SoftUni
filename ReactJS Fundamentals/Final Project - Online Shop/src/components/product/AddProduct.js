@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import requester from '../../utils/requester';
 import dataCollector from '../../utils/dataCollector';
 import notification from '../../utils/notification';
@@ -56,6 +57,10 @@ class AddProduct extends Component {
     }
 
     render() {
+        if(localStorage.username !== 'admin'){
+            return <Redirect to='/home' />
+        }
+
         return (
             <form className='add-form' onSubmit={this.addProduct.bind(this)}>
                 <div>

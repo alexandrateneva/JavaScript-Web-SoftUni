@@ -3,7 +3,7 @@ import notification from '../utils/notification';
 
 export default (state, productId, setState, props) => {
   if (localStorage.username === 'guest') {
-    notification.push('error', 'For comment, please first login.');
+    notification.push('error', 'For like, please first login.');
     props.history.push('/login');
     return;
   }

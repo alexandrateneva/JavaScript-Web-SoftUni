@@ -16,7 +16,9 @@ class Comment extends Component {
                 <p>{this.props.comment.content}</p>
                 <div className='info'>
                     submitted {calcTime(this.props.comment._kmd.ect)} ago by {this.props.comment.author}  
-                    {(this.props.comment.author === localStorage.getItem('username')) ? deleteBtn : null}
+                    {(this.props.comment.author === localStorage.getItem('username') || localStorage.getItem('username') === 'admin') 
+                    ? deleteBtn 
+                    : null}
                 </div>
             </article>);
     }

@@ -7,6 +7,12 @@ body {
   background-color: #F9F6F6;
 }
 
+.load {  
+  display: flex;
+  justify-content: center;
+  align-items: center;  
+}
+
 .first-header {
   background: url('../images/rabbit-2174679_1920\ Cropped.jpg');
 }
@@ -77,4 +83,3 @@ h5 {
   background-color: #FFF;
   color: lightgray;
 }
-

@@ -16,6 +16,7 @@ import EditCategory from '../category/EditCategory';
 import Categories from '../category/Categories';
 import Products from '../product/Products';
 import Profile from '../auth/Profile';
+import NotFound from '../common/NotFound';
 
 class ViewComponent extends Component {
   render () {
@@ -24,20 +25,21 @@ class ViewComponent extends Component {
         <Route exact path='/' component={Home} />
         <Route path='/home' component={Home} />
         <Route path='/register' component={Register} />
-        <Route path='/login' component={Login} />   
+        <Route path='/login' component={Login} />
         <Route path='/addProduct' component={AddProduct} />
-        <Route path='/editProduct/:id' component={EditProduct} />        
-        <Route path='/deleteProduct/:id' component={DeleteProduct} />  
-        <Route path='/product/:id' component={ProductDetails} />                 
+        <Route path='/editProduct/:id' component={EditProduct} />
+        <Route path='/deleteProduct/:id' component={DeleteProduct} />
+        <Route path='/product/:id' component={ProductDetails} />
         <Route path='/cart' component={Cart} />
-        <Route path='/order' component={OrderForm} />        
-        <Route path='/orders' component={Orders} />               
+        <Route path='/order' component={OrderForm} />
+        <Route path='/orders' component={Orders} />
         <Route path='/addCategory' component={CategoriesAdmin} />
-        <Route path='/deleteCategory/:id' component={DeleteCategory} />        
+        <Route path='/deleteCategory/:id' component={DeleteCategory} />
         <Route path='/editCategory/:id' component={EditCategory} />
-        <Route path='/categories' component={Categories} />        
-        <Route path='/products/:category' component={Products} />              
-        <Route path='/profile' component={Profile} />    
+        <Route path='/categories' component={Categories} />
+        <Route path='/products/:category' component={Products} />
+        <Route path='/profile' component={Profile} />
+        <Route component={NotFound} />
       </Switch>
     );
   }

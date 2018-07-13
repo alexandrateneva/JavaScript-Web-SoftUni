@@ -35,6 +35,10 @@ class AddComment extends Component {
             notification.push('error', 'For comment, please first login.');
             this.props.history.push('/login');
         } else {
+            if (this.state.content === '') {
+                return notification.push('error', 'Уou need to fill out content of the comment.');
+            }
+
             requester.addComment(obj).then(res => {
                 this.props.addComment(res);
             });

@@ -3,12 +3,14 @@ import '../../style/css/comments.css';
 import Comment from '../partials/Comment';
 import AddComment from '../comments/AddComment';
 import requester from '../../utils/requester';
+import Loader from '../common/Loader';
 
 class Comments extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
+            loading: true,
             productId: this.props.productId,
             comments: []
         };
@@ -28,7 +30,8 @@ class Comments extends Component {
     renderMyData() {
         requester.listComments(this.state.productId).then(comments => {
             this.setState({
-                comments: comments                
+                comments: comments  ,
+                loaded: false               
             });
         });
     }
@@ -52,6 +55,10 @@ class Comments extends Component {
     }
 
     render() {
+        if (this.state.loaded === true || this.state.loaded === undefined) {
+            return <div className='load'><Loader /></div>;
+          }
+          
         return (
             <div className='product-comments'>          
                 <AddComment productId={this.state.productId} addComment={this.addComment.bind(this)} {...this.props} />
