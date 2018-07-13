@@ -13,8 +13,8 @@ class CartProduct extends Component {
         };
     }
 
-    componentWillReceiveProps(nextProps) {
-        if (this.props.product._id !== nextProps.product._id) {
+    componentDidUpdate(prevProps, prevState) {
+        if (this.props.product._id !== prevProps.product._id) {
             this.setState({
                 count: this.props.count,
                 total: this.props.total

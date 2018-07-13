@@ -6,7 +6,7 @@ class Header extends Component {
     return (
       <header>
         <Navigation username={this.props.username} />
-        <h1>Shop Name</h1>
+        <h1>Zoo Shop</h1>
       </header>
     );
   }

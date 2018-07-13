@@ -22,7 +22,7 @@ class AddProduct extends Component {
         this.setState(dataCollector(e));
     }
 
-    componentWillMount() {
+    componentDidMount() {
         requester.listCategories().then(res => {
             this.setState({
                 categories: res

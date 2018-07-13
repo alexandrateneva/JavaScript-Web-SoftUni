@@ -11,27 +11,31 @@ class Comments extends Component {
 
         this.state = {
             loading: true,
-            productId: this.props.productId,
+            productId: '',
             comments: []
         };
     }
 
-    componentWillMount() {
+    componentDidMount() {
         this.renderMyData();
     }
 
-    componentWillReceiveProps(newProps) {        
-        this.setState({
-            productId: newProps.productId
-        })
-        this.renderMyData();
+    componentDidUpdate(prevProps, prevState) {
+        if (this.props.match.params.id !== prevProps.match.params.id) {
+            this.setState({
+                loaded: true
+            });
+            this.renderMyData();
+        }
     }
+
 
     renderMyData() {
-        requester.listComments(this.state.productId).then(comments => {
+        requester.listComments(this.props.match.params.id).then(comments => {
             this.setState({
-                comments: comments  ,
-                loaded: false               
+                comments: comments,
+                productId: this.props.match.params.id,
+                loaded: false
             });
         });
     }
@@ -57,10 +61,10 @@ class Comments extends Component {
     render() {
         if (this.state.loaded === true || this.state.loaded === undefined) {
             return <div className='load'><Loader /></div>;
-          }
-          
+        }
+
         return (
-            <div className='product-comments'>          
+            <div className='product-comments'>
                 <AddComment productId={this.state.productId} addComment={this.addComment.bind(this)} {...this.props} />
                 {this.state.comments.map((c, i) => <Comment key={i} index={i} comment={c} deleteComment={this.deleteComment.bind(this)} />)}
             </div>);

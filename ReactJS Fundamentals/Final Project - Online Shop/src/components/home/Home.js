@@ -13,7 +13,7 @@ class Home extends Component {
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     if (localStorage.username === undefined) {
       requester.login({ username: 'guest', password: '123' })
         .then(res => {

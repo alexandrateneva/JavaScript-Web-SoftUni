@@ -26,7 +26,7 @@
   
   .navbar li a:hover {
     background: transparent;
-    color: black;
+    color: #C71585;
     transition: 0.5s;
   }
 

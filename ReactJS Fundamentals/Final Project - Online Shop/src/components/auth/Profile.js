@@ -5,17 +5,21 @@ import ProfileComment from '../partials/ProfileComment';
 import Loader from '../common/Loader';
 
 class Profile extends Component {
-  constructor () {
+  constructor() {
     super();
 
     this.state = {
-      loading: true,
+      loading: false,
       likedProducts: [],
       commentedProducts: []
     };
   }
 
-  componentWillMount () {
+  componentDidMount() {
+    this.getData();
+  }
+
+  getData = (token) => {
     requester.likedProducts(localStorage.username)
       .then(likedProducts => {
         requester.commentedProducts(localStorage.username)
@@ -29,11 +33,11 @@ class Profile extends Component {
       });
   }
 
-  render () {
+  render() {
     if (this.state.loaded === true || this.state.loaded === undefined) {
       return <div className='load'><Loader /></div>;
     }
-    
+
     return (
       <div>
         <h2>Products you liked:</h2>
@@ -45,7 +49,7 @@ class Profile extends Component {
         <h2>Your comments:</h2>
         <div className='comments-profile'>
           {(this.state.commentedProducts.length > 0)
-            ? this.state.commentedProducts.map((c, i) => <ProfileComment style={{ display: 'block' }} comment={c} />)
+            ? this.state.commentedProducts.map((c, i) => <ProfileComment key={i} style={{ display: 'block' }} comment={c} />)
             : <i>Тhere are no products you have commented on.</i>}
         </div>
       </div>

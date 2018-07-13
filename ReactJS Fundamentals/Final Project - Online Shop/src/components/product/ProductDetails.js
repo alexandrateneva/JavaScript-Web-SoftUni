@@ -12,7 +12,7 @@ class ProductDetails extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {      
+    this.state = {
       loading: true,
       productId: '',
       product: '',
@@ -22,17 +22,17 @@ class ProductDetails extends Component {
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.getData();
   }
 
-  componentWillReceiveProps(newProps) {
-    if(this.props.match.params.id !== this.state.productId){
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.match.params.id !== prevProps.match.params.id) { 
       this.setState({
         loaded: true
       });
-    }   
-    this.getData();
+      this.getData();
+    }
   }
 
   getData = () => {
@@ -41,7 +41,6 @@ class ProductDetails extends Component {
         requester.similarProducts(product.category)
           .then(similarProducts => {
             let index = product.likes.indexOf(localStorage.username);
-
             this.setState({
               product: product,
               productId: product._id,
@@ -66,7 +65,7 @@ class ProductDetails extends Component {
 
     const buyAndLike = (<div>
       <a onClick={() => addProductToCart(this.state.product)}><Icon small id='add-icon'>add_shopping_cart</Icon></a>
-      <a onClick={() => likeAndDislikeProduct(this.state.product, this.props.match.params.id, this.setContent.bind(this), this.props)}><Icon small className={this.state.likeBtn}>favorite</Icon></a>
+      <a onClick={() => likeAndDislikeProduct(this.state.likeBtn, this.setContent.bind(this), this.props)}><Icon small className={this.state.likeBtn}>favorite</Icon></a>
       <h5>{this.state.likes} Likes</h5>
     </div>);
 
@@ -89,7 +88,7 @@ class ProductDetails extends Component {
             {(localStorage.username === 'admin') ? editAndDelete : buyAndLike}
           </div>
         </div>
-        <Comments style={{ display: 'block' }} productId={this.state.product._id} {...this.props} />
+        <Comments style={{ display: 'block' }} {...this.props} />
       </div>
       <div className='similar-products'>
         <h5>You might also like</h5>

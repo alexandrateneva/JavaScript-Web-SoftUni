@@ -17,7 +17,7 @@ class EditProduct extends Component {
         };
     }
 
-    componentWillMount() {
+    componentDidMount() {
         requester.productDetails(this.props.match.params.id)
             .then(res => {
                 this.setState({

@@ -15,7 +15,7 @@ class EditCategory extends Component {
         };
     }
 
-    componentWillMount() {
+    componentDidMount() {
         requester.getCategory(this.props.match.params.id)
             .then(res => {
                 this.setState({
@@ -31,7 +31,7 @@ class EditCategory extends Component {
 
     editCategory = (e) => {
         e.preventDefault();
-        if (this.state.title === '') {
+        if (this.state.name === '') {
             return notification.push('error', 'Category name is required.');
         }
         requester.editCategory(this.props.match.params.id, this.state).then(res => {
