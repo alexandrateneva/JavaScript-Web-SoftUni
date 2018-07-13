@@ -22,7 +22,7 @@ ReactJS and a Kinvey service was used for a back-end.
 ---
 
 The application has:
-<<<<<<< HEAD
+
 - public part (accessible without authentication)
 - private part (available for registered users) and
 - administrative part (available for administrators only)
@@ -30,7 +30,6 @@ The application has:
 - 	public part (accessible without authentication)
 - 	private part (available for registered users) and
 - 	administrative part (available for administrators only)
->>>>>>> d324a173e611ec47f88035544501b0751d3ec57a
 
 ### Public part
 The public part inludes the application home page, where all products are listed, category page,
@@ -52,7 +51,6 @@ For the app structure was used grouping by file type.
 
 In the root directory (/src) there are 3 subdirectories:
 
-<<<<<<< HEAD
 - components (all components divided into other subfolders)
 - style (css and images for site design) and
 - utils (some helper functions)
