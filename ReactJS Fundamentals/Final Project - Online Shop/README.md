@@ -15,7 +15,7 @@ ReactJS and a Kinvey service was used for a back-end.
 - react-router-dom: ^4.3.1,
 - react-scripts: 1.1.4
 
-## Start & watch
+## Start 
 
     $ npm start
 	
@@ -58,7 +58,7 @@ In the directory components there are 9 other subdirectories:
 - 	comments - AddComment and Comments
 - 	common - Header, Navigation, Footer, Notification, Loader, NotFound and ViewComponent
   
-  In ViewComponent are listed all routes that will be matched by React Router. NotFound is the component that will be rendered if none of other routes match. 
+&nbsp; In ViewComponent are listed all routes that will be matched by React Router. NotFound is the component that will be rendered if none of other routes match. 
 - 	home - Home
 - 	orders - OrderForm and Orders
 - 	partials - Category, Order, Comment, Product, CartProduct, ShortProduct, ProfileProduct and ProfileComment
