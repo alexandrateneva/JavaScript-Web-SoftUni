@@ -46,22 +46,22 @@ For the app structure was used grouping by file type.
 
 In the root directory (/src) there are 3 subdirectories:
 
-•	components (all components divided into other subfolders)
-•	style (css and images for site design) and
-•	utils (some helper functions)
+- 	components (all components divided into other subfolders)
+- 	style (css and images for site design) and
+- 	utils (some helper functions)
 
 In the directory components there are 9 other subdirectories:
 
-•	auth - Register, Login, Logout and Profile
-•	cart - Cart
-•	category - AddCategory, EditCategory, DeleteCategory, Categories and CategoriesAdmin
-•	comments - AddComment and Comments
-•	common - Header, Navigation, Footer, Notification, Loader, NotFound and ViewComponent
+- 	auth - Register, Login, Logout and Profile
+- 	cart - Cart
+- 	category - AddCategory, EditCategory, DeleteCategory, Categories and CategoriesAdmin
+- 	comments - AddComment and Comments
+- 	common - Header, Navigation, Footer, Notification, Loader, NotFound and ViewComponent
   In ViewComponent are listed all routes that will be matched by React Router. NotFound is the component that will be rendered if none of other routes match. 
-•	home - Home
-•	orders - OrderForm and Orders
-•	partials - Category, Order, Comment, Product, CartProduct, ShortProduct, ProfileProduct and ProfileComment
-•	product - Product, AddProduct, EditProduct, DeleteProduct and ProductDetails
+- 	home - Home
+- 	orders - OrderForm and Orders
+- 	partials - Category, Order, Comment, Product, CartProduct, ShortProduct, ProfileProduct and ProfileComment
+- 	product - Product, AddProduct, EditProduct, DeleteProduct and ProductDetails
 
 ---
 
