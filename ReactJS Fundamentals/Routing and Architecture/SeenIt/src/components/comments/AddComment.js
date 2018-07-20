@@ -4,7 +4,7 @@ import Post from '../partials/Post';
 import reqHandler from '../../utils/reqHandler';
 import dataCollector from '../../utils/dataCollector';
 
-class AddPost extends Component {
+class AddComment extends Component {
     constructor(props) {
         super(props);
 
@@ -39,4 +39,4 @@ class AddPost extends Component {
     }
 }
 
-export default AddPost;
+export default AddComment;

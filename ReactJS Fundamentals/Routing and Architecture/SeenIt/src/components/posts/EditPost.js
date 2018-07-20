@@ -5,7 +5,7 @@ import reqHandler from '../../utils/reqHandler';
 import dataCollector from '../../utils/dataCollector';
 import observer from '../../utils/observer';
 
-class AddPost extends Component {
+class EditPost extends Component {
     constructor(props) {
         super(props);
 
@@ -76,4 +76,4 @@ class AddPost extends Component {
     }
 }
 
-export default AddPost;
+export default EditPost;

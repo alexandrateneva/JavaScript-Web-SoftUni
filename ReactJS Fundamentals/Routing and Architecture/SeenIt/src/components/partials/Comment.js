@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import calcTime from '../../utils/calcTime';
 import reqHandler from '../../utils/reqHandler';
 
-class Post extends Component {
+class Comment extends Component {
     deleteComment = () => {
         reqHandler.deleteComment(this.props.comment._id).then(res => {
             this.props.deleteComment(this.props.comment._id);
@@ -23,4 +23,4 @@ class Post extends Component {
     }
 }
 
-export default Post;
+export default Comment;
