@@ -1,0 +1,17 @@
+.wrapper{
+    padding-top: 60px;
+    text-align: center;
+}
+
+h2, h4 {
+    color: aliceblue;
+}
+
+.number {
+    display: inline-block;
+    text-align: center;
+    background: aliceblue;
+    color: black;
+    border-radius: 25px;
+    width: 20px;
+}

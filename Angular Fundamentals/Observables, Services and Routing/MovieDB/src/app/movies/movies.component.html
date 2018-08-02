@@ -1,0 +1,61 @@
+<app-search></app-search>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+      <h3 class="panel-title">Popular Movies</h3>    
+  </div> 
+  <div *ngIf="popular" class="panel-body">
+      <div class="row">
+          <div *ngFor="let movie of popular.results;let i=index" class="col-md-2">
+              <div *ngIf="i < 6">
+                 <app-movie-box [movie]="movie"></app-movie-box>
+              </div>
+          </div>    
+      </div>    
+  </div>   
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+      <h3 class="panel-title">In Theaters</h3>    
+  </div> 
+  <div *ngIf="theaters" class="panel-body">
+      <div class="row">
+          <div *ngFor="let movie of theaters.results;let i=index" class="col-md-2">
+              <div *ngIf="i < 6">
+                <app-movie-box [movie]="movie"></app-movie-box>
+              </div>
+          </div>    
+      </div>    
+  </div>   
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Kids</h3>    
+    </div> 
+    <div *ngIf="forKids" class="panel-body">
+        <div class="row">
+            <div *ngFor="let movie of forKids.results;let i=index" class="col-md-2">
+                <div *ngIf="i < 6">
+                    <app-movie-box [movie]="movie"></app-movie-box>
+                </div>
+            </div>    
+        </div>    
+    </div>   
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Best dramas</h3>    
+    </div> 
+    <div *ngIf="dramas" class="panel-body">
+        <div class="row">
+            <div *ngFor="let movie of dramas.results;let i=index" class="col-md-2">
+                <div *ngIf="i < 6">
+                    <app-movie-box [movie]="movie"></app-movie-box>
+                </div>
+            </div>    
+        </div>    
+    </div>   
+  </div>
