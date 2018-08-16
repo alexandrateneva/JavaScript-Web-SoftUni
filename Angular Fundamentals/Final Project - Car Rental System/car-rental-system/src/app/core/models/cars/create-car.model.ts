@@ -1,0 +1,11 @@
+export class CreateCarModel {
+    constructor(
+        public make: string,
+        public model: string,
+        public imageUrl: string,
+        public year: number,
+        public fuelType: string,
+        public engine: string,
+        public pricePerDay: number
+    ) { }
+}

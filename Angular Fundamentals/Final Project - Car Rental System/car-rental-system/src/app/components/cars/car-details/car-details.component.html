@@ -1,0 +1,28 @@
+<div *ngIf="car | async as c" class="container">
+    <div class="row space-top">
+        <div class="col-md-12">
+            <h1>Car Details</h1>
+        </div>
+    </div>
+    <div class="row space-top">
+        <div class="col-md-4">
+            <div class="card text-white bg-primary">
+                <div class="card-body">
+                    <blockquote class="card-blockquote">
+                        <img src="{{c.imageUrl}}" />
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <p>Make: {{c.make}}</p>
+            <p>Model: {{c.model}}</p>
+            <p>Year: {{c.year}}</p>
+            <p>Fuel Type: {{c.fuelType}}</p>
+            <p>Engine: {{c.engine}}</p>
+            <p>Power Output: {{c.powerOutput}}</p>            
+            <p>Price per Day: {{c.pricePerDay}} BGN</p>
+            <a routerLink="/car/rent/{{c._id}}" class="btn btn-info btn-lg btn-block">Want to Rent</a>
+        </div>
+    </div>
+  </div>

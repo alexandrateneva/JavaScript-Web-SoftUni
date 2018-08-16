@@ -12,7 +12,6 @@ const logoutUrl = `https://baas.kinvey.com/user/${appKey}/_logout`;
 
 @Injectable()
 export class AuthService {
-    private currentAuthtoken: string;
 
     constructor(private http: HttpClient) { }
 
@@ -26,5 +25,11 @@ export class AuthService {
 
     isAuthenticated(): boolean {
         return localStorage.getItem('token') !== null;
+    }
+
+    isAdmin(): boolean {
+        let id = localStorage.getItem('id');
+        let username = localStorage.getItem('username');
+        return id === '' && username === '';
     }
 }

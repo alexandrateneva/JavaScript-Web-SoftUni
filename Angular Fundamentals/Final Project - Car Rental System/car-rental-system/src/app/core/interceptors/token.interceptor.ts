@@ -39,7 +39,7 @@ export class TokenInterceptor implements HttpInterceptor {
 
         return next.handle(request).pipe(tap((res: any) => {
 
-            if (res instanceof HttpResponse && res.body._kmd.authtoken) {
+            if (res instanceof HttpResponse && res.body._kmd && res.body._kmd.authtoken) {
                 let message = this.router.url.endsWith('signup')
                     ? 'Signup successful!'
                     : 'Signin successful!';
@@ -47,17 +47,17 @@ export class TokenInterceptor implements HttpInterceptor {
                 this.toastr.success(message, 'Success!');
                 this.router.navigate(['/home']);
             }
-
-            // if (res instanceof HttpResponse && res.status === 200 && res.url.endsWith('create')) {
-            //     this.toastr.success(res.body.message, 'Success!');
-            //     this.router.navigate(['/furniture/all']);
-            // }
-
+            
+            if (res instanceof HttpResponse && res.status === 201 && this.router.url.endsWith('create')) {
+                this.toastr.success('Car created successful!', 'Success!');
+                this.router.navigate(['/car/all']);
+            }
         }))
     }
 
     private saveToken(data) {
         localStorage.setItem('user', data.username);
         localStorage.setItem('token', data._kmd.authtoken);
+        localStorage.setItem('id', data._id);        
     }
 }

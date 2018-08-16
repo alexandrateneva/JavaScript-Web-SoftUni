@@ -1,0 +1,39 @@
+<div *ngIf="car" class="container">
+    <div class="row space-top"><br/><br/><br/></div>
+    <div class="row space-top">
+        <div class="col-md-4">
+            <div class="card text-white bg-primary">
+                <div class="card-body">
+                    <blockquote class="card-blockquote">
+                        <img src="{{car.imageUrl}}" />
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 text-center">
+            <h1>{{car.make}} {{car.model}}</h1>
+            <br/>
+            <h5>Price per Day: {{car.pricePerDay}} BGN</h5>
+            <h5>Days: {{days}}</h5>
+            <hr>
+            <h4>Total: {{totalSum}} BGN</h4>
+
+            <button
+            class="btn btn-primary"
+            mwlConfirmationPopover
+            [popoverTitle]="popoverTitle"
+            [popoverMessage]="popoverMessage"
+            placement="bottom"
+            (confirm)="rent()">
+            Rent
+           </button>
+
+            <!-- <a (click)="rent()" class="btn btn-primary">Rent</a> -->
+
+        </div>
+        <div class="col-md-4  text-center">
+            <h3>Calendar</h3>
+            <ngbd-datepicker-range (onDatePicked)="changeDays($event)"></ngbd-datepicker-range>
+        </div>
+    </div>
+  </div>

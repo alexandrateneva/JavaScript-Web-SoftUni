@@ -1,0 +1,114 @@
+<div class="container">
+    <form  (ngSubmit)="create()" #createCarForm="ngForm" class="row justify-content-md-center text-center">
+        <fieldset class="col-6">
+          <h1>Create Car Form</h1>
+          
+            <div *ngIf="errorMsg" class="alert alert-danger">
+              {{errorMsg}}
+            </div>
+      
+            <div class="form-group">
+              <label for="make">Make</label>
+              <input type="text" class="form-control" id="make" 
+              required
+              pattern="^[A-Za-z\s]+$"
+              name="make"
+              [(ngModel)]="bindingModel.make"
+              #make="ngModel">
+              <div [hidden]="make.valid || make.pristine" class="alert alert-danger">
+                Make is required and must contain only letters.
+              </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="model">Model</label>
+                <input type="text" class="form-control" id="model" 
+                required
+                pattern="^[A-Za-z\d\-]+$"
+                name="model"
+                [(ngModel)]="bindingModel.model"
+                #model="ngModel">
+                <div [hidden]="model.valid || model.pristine" class="alert alert-danger">
+                  Model is required and must contain only letters and digits.
+                </div>
+              </div>
+
+              <div class="form-group">
+                  <label for="imageUrl">Image URL</label>
+                  <input type="text" class="form-control" id="imageUrl"
+                  required
+                  name="imageUrl"
+                  [(ngModel)]="bindingModel.imageUrl"
+                  #imageUrl="ngModel">
+                  <div [hidden]="imageUrl.valid || imageUrl.pristine" class="alert alert-danger">
+                    Image URL is required.
+                  </div>
+              </div>
+
+              <div class="form-group">
+                  <label for="year">Year</label>
+                  <input type="number" class="form-control" id="year"
+                  [range]="[1980, 2020]"
+                  required
+                  name="year"
+                  [(ngModel)]="bindingModel.year"
+                  #year="ngModel">
+                  <div [hidden]="year.valid || year.pristine" class="alert alert-danger">
+                      Year must be between 1980 and 2020.
+                  </div>
+              </div> 
+              
+              <div class="form-group">
+                  <label for="fuelType">Fuel Type</label>
+                  <input type="text" class="form-control" id="fuelType"
+                  required
+                  pattern="^[A-Za-z]+$"
+                  name="fuelType"
+                  [(ngModel)]="bindingModel.fuelType"
+                  #fuelType="ngModel">
+                  <div [hidden]="fuelType.valid || fuelType.pristine" class="alert alert-danger">
+                      Fuel Type is required and must contain only letters.
+                  </div>
+              </div>
+
+              <div class="form-group">
+                  <label for="engine">Engine</label>
+                  <input type="text" class="form-control" id="engine"
+                  required
+                  name="engine"
+                  [(ngModel)]="bindingModel.engine"
+                  #engine="ngModel">
+                  <div [hidden]="engine.valid || engine.pristine" class="alert alert-danger">
+                    Engine is required.
+                  </div>
+              </div>
+
+              <div class="form-group">
+                  <label for="powerOutput">Power output</label>
+                  <input type="text" class="form-control" id="powerOutput"
+                  required
+                  name="powerOutput"
+                  [(ngModel)]="bindingModel.powerOutput"
+                  #powerOutput="ngModel">
+                  <div [hidden]="powerOutput.valid || powerOutput.pristine" class="alert alert-danger">
+                    Power output is required.
+                  </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="pricePerDay">Price Per Day</label>
+                    <input type="text" class="form-control" id="pricePerDay"
+                    required
+                    [min]="10"
+                    name="pricePerDay"
+                    [(ngModel)]="bindingModel.pricePerDay"
+                    #pricePerDay="ngModel">
+                    <div [hidden]="pricePerDay.valid || pricePerDay.pristine" class="alert alert-danger">
+                      Price per day must be positive number, bigger than 10.
+                    </div>
+                </div>
+
+          <button type="submit" class="btn btn-primary" [disabled]="createCarForm.form.invalid">Create</button>
+        </fieldset>
+    </form>
+  </div>

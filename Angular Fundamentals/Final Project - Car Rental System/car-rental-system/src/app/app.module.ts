@@ -6,6 +6,7 @@ import { ToastrModule, ToastrService } from 'ngx-toastr';
 
 import { AuthModule } from './core/modules/auth.module';
 import { SharedModule } from './core/modules/shared.module';
+import { CarsModule } from './core/modules/cars.module';
 import { AppRoutingModule } from './app.routing';
 
 import { AppComponent } from './app.component';
@@ -22,7 +23,8 @@ import { ErrorInterceptor } from './core/interceptors/error.interceptor';
     AppRoutingModule,
     ToastrModule.forRoot(),
     AuthModule,
-    SharedModule
+    SharedModule,           
+    CarsModule
   ],
   providers: [
     {
