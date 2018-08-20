@@ -1,6 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { NgbDateStruct, NgbCalendar, NgbDatepickerConfig } from '@ng-bootstrap/ng-bootstrap';
+import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { RentService } from '../../../core/services/rent.service';
 
 const equals = (one: NgbDateStruct, two: NgbDateStruct) =>
   one && two && two.year === one.year && two.month === one.month && two.day === one.day;
@@ -29,7 +31,13 @@ export class NgbdDatepickerRange implements OnInit {
 
   disabledDates: Array<Date>;
 
-  constructor(calendar: NgbCalendar, config: NgbDatepickerConfig, private toastr: ToastrService) {
+  constructor(
+    calendar: NgbCalendar,
+    config: NgbDatepickerConfig,
+    private toastr: ToastrService,
+    private rentService: RentService,
+    private route: ActivatedRoute
+  ) {
     this.fromDate = calendar.getToday();
 
     config.minDate = calendar.getToday();
@@ -42,7 +50,7 @@ export class NgbdDatepickerRange implements OnInit {
 
       for (let d of this.disabledDates) {
         if (d.getDate() == date.day &&
-          d.getMonth() == date.month &&
+          d.getMonth() + 1 == date.month &&
           d.getFullYear() == date.year) {
           disabled.push(d);
         }
@@ -53,8 +61,20 @@ export class NgbdDatepickerRange implements OnInit {
   }
 
   ngOnInit() {
-    //TODO: get data from database
-    this.disabledDates = [new Date(2018, 9, 21), new Date(2018, 9, 20),];
+    let carId = this.route.snapshot.params['id'];
+    this.rentService.getByCarId(carId).subscribe(rents => {
+      let currentDisabledDates = [];
+      for (let rent of rents) {
+        let startDate = new Date(rent.startDate);
+        let endDate = new Date(rent.endDate);
+
+        for (let d = startDate; d <= endDate; d.setDate(d.getDate() + 1)) {
+          let currentDay = new Date(d);
+          currentDisabledDates.push(currentDay);
+        }
+      }
+      this.disabledDates = currentDisabledDates;
+    })
   }
 
   isWeekend(date: NgbDateStruct) {
@@ -72,18 +92,18 @@ export class NgbdDatepickerRange implements OnInit {
       this.fromDate = date;
     }
 
-    let startDate = new Date(this.fromDate.year, this.fromDate.month, this.fromDate.day);
+    let startDate = new Date(this.fromDate.year, this.fromDate.month - 1, this.fromDate.day);
     this.onDatePicked.emit([startDate]);
 
     if (this.fromDate && this.toDate) {
-      let endDate = new Date(this.toDate.year, this.toDate.month, this.toDate.day);
+      let endDate = new Date(this.toDate.year, this.toDate.month - 1, this.toDate.day);
       for (let current of this.disabledDates) {
-        if (startDate < current && current < endDate) {
+        if (startDate <= current && current <= endDate) {
           return this.toastr.error('On the red dates the car is not free. Please choose another period!', 'Warning!');
         }
       }
       this.onDatePicked.emit([startDate, endDate]);
-    }
+    } 
   }
 
   isHovered = date => this.fromDate && !this.toDate && this.hoveredDate && after(date, this.fromDate) && before(date, this.hoveredDate);

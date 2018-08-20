@@ -8,10 +8,13 @@
   <div class="collapse navbar-collapse" id="navbarColor01">
       <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" routerLink="car/create">Create Car</a>
+            <a class="nav-link" routerLink="/car/create">Create Car</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="car/all">Cars</a>
+              <a class="nav-link" routerLink="/rented">Rents</a>
+            </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/car/all">Cars</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" routerLink="/about">About</a>
@@ -28,8 +31,11 @@
         <a class="nav-link" routerLink="/signup">Sign Up</a>
       </li>
       <li *ngIf="authService.isAuthenticated()" class="nav-item">
-          <i class="nav-link">Welcome, {{username}}!</i>
-        </li>
+        <i class="nav-link">Welcome, {{username}}!</i>
+      </li>
+      <li *ngIf="authService.isAuthenticated()" class="nav-item">
+          <a class="nav-link" routerLink="/profile">Profile</a>
+      </li>
       <li *ngIf="authService.isAuthenticated()" class="nav-item">
         <a class="nav-link" (click)="logout()">Logout</a>
       </li>

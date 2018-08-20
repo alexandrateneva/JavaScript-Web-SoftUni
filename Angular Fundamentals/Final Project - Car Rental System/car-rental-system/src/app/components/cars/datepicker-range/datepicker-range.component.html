@@ -1,3 +1,4 @@
+<div *ngIf="disabledDates">
 <ngb-datepicker #dp (select)="onDateSelection($event)" 
     [displayMonths]="1" 
     [dayTemplate]="t" >
@@ -15,6 +16,8 @@
     {{ date.day }}
   </span>
 </ng-template>
+</div>
+
 
 <!-- <hr>
 

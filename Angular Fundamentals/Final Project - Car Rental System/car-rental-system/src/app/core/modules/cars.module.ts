@@ -7,12 +7,15 @@ import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 
 import { CarsRoutingModule } from './cars-routing.module';
 import { CarsService } from '../services/cars.service';
+import { RentService } from '../services/rent.service';
+
 import { CarCreateComponent } from '../../components/cars/car-create/car-create.component';
 import { ListAllCarsComponent } from '../../components/cars/list-all-cars/list-all-cars.component';
 import { CarDetailsComponent } from '../../components/cars/car-details/car-details.component';
 import { CarEditComponent } from '../../components/cars/car-edit/car-edit.component';
 import { CarRentComponent } from '../../components/cars/car-rent/car-rent.component';
 import { NgbdDatepickerRange } from '../../components/cars/datepicker-range/datepicker-range.component';
+import { ListAllRentedCarsComponent } from '../../components/cars/list-all-rented-cars/list-all-rented-cars.component';
 
 @NgModule({
     declarations: [
@@ -21,7 +24,8 @@ import { NgbdDatepickerRange } from '../../components/cars/datepicker-range/date
         CarDetailsComponent,
         CarEditComponent,
         CarRentComponent,
-        NgbdDatepickerRange
+        NgbdDatepickerRange,
+        ListAllRentedCarsComponent
     ],
     imports: [
         CommonModule,
@@ -32,7 +36,8 @@ import { NgbdDatepickerRange } from '../../components/cars/datepicker-range/date
         CarsRoutingModule
     ],
     providers: [
-        CarsService
+        CarsService,
+        RentService
     ]
 })
 export class CarsModule { }

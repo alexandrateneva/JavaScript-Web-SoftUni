@@ -1,8 +1,12 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { CarModel } from '../../../core/models/cars/car.model';
+import { CreateRentModel } from '../../../core/models/cars/create-rent.model';
+import { AuthService } from '../../../core/services/auth.service';
 import { CarsService } from '../../../core/services/cars.service';
+import { RentService } from '../../../core/services/rent.service';
 import { NgbdDatepickerRange } from '../datepicker-range/datepicker-range.component';
 
 @Component({
@@ -15,17 +19,24 @@ export class CarRentComponent implements OnInit {
   endDate: Date;
   period: number = 1;
   car: CarModel;
-  id: string;
+  carId: string;
 
   popoverTitle: string = 'Rent Confirmation';
   popoverMessage: string = 'Are you sure you want to rent this car?';
 
-  constructor(private carsService: CarsService, private route: ActivatedRoute) {
-    this.id = this.route.snapshot.params['id'];
+  constructor(
+    private authService: AuthService,
+    private carsService: CarsService,
+    private rentService: RentService,
+    private toastr: ToastrService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {
+    this.carId = this.route.snapshot.params['id'];
   }
 
   ngOnInit() {
-    this.carsService.getDetails(this.id).subscribe(data => {
+    this.carsService.getDetails(this.carId).subscribe(data => {
       this.car = data;
     });
   }
@@ -52,6 +63,30 @@ export class CarRentComponent implements OnInit {
   }
 
   rent() {
-    //TODO: rent
+    let userId = localStorage.getItem('id')
+    let car = {
+      id: this.car._id,
+      make: this.car.make,
+      model: this.car.model,
+      imageUrl: this.car.imageUrl
+    }
+    this.authService.getUserById(userId).subscribe(userInfo => {
+      let user = {
+        id: userInfo._id,
+        firstName: userInfo.firstName,
+        lastName: userInfo.lastName,
+        email: userInfo.email
+      }
+      if (!this.startDate && !this.endDate) {
+        this.startDate = new Date();
+        this.endDate = new Date();
+      }
+
+      let rentModel = new CreateRentModel(car, user, this.startDate, this.endDate, this.totalSum);
+      this.rentService.create(rentModel).subscribe(() => {
+        this.toastr.success('Car rented successful!', 'Success!');
+        this.router.navigate(['/home']);
+      });
+    })
   }
 }

@@ -13,7 +13,6 @@ import { deteleAnimation } from '../delete-car.animation';
   animations: deteleAnimation
 })
 export class ListAllCarsComponent implements OnInit {
-  furnitures: CarModel[];
   cars: CarModel[];
 
   constructor(

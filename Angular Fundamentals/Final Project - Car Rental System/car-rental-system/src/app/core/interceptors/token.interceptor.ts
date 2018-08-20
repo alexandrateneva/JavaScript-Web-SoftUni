@@ -47,7 +47,7 @@ export class TokenInterceptor implements HttpInterceptor {
                 this.toastr.success(message, 'Success!');
                 this.router.navigate(['/home']);
             }
-            
+
             if (res instanceof HttpResponse && res.status === 201 && this.router.url.endsWith('create')) {
                 this.toastr.success('Car created successful!', 'Success!');
                 this.router.navigate(['/car/all']);
@@ -58,6 +58,6 @@ export class TokenInterceptor implements HttpInterceptor {
     private saveToken(data) {
         localStorage.setItem('user', data.username);
         localStorage.setItem('token', data._kmd.authtoken);
-        localStorage.setItem('id', data._id);        
+        localStorage.setItem('id', data._id);
     }
 }

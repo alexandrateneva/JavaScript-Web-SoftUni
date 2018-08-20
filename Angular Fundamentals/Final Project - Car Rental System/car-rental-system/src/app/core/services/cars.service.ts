@@ -8,7 +8,7 @@ const appSecret = "805b3f15a06d4cbe979443953f831283";
 
 const createCarUrl = `https://baas.kinvey.com/appdata/${appKey}/cars`;
 const getAllCarsUrl = `https://baas.kinvey.com/appdata/${appKey}/cars?query={}&sort={"_kmd.ect": -1}`;
-const currentCarUrl = `https://baas.kinvey.com/appdata/${appKey}/cars/`
+const currentCarUrl = `https://baas.kinvey.com/appdata/${appKey}/cars/`;
 
 @Injectable()
 export class CarsService {

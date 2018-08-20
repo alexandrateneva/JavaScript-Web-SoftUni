@@ -7,12 +7,14 @@ import { CustomFormsModule } from 'ng2-validation'
 
 import { SignupComponent } from '../../components/authentication/signup/signup.component';
 import { SigninComponent } from '../../components/authentication/signin/signin.component';
+import { ProfileComponent } from '../../components/authentication/profile/profile.component';
 import { AuthService } from '../services/auth.service';
 
 @NgModule({
     declarations: [
         SigninComponent,
-        SignupComponent
+        SignupComponent,
+        ProfileComponent
     ],
     imports: [
         FormsModule,

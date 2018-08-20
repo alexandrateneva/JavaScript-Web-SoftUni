@@ -6,6 +6,7 @@ import { SignupComponent } from './components/authentication/signup/signup.compo
 import { HomeComponent } from './components/shared/home/home.component';
 import { AboutComponent } from './components/shared/about/about.component';
 import { ContactsComponent } from './components/shared/contacts/contacts.component';
+import { ProfileComponent } from './components/authentication/profile/profile.component';
 import { CarsModule } from './core/modules/cars.module';
 
 const routes: Routes = [
@@ -14,7 +15,8 @@ const routes: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'contacts', component: ContactsComponent },  
   { path: 'signin', component: SigninComponent },
-  { path: 'signup', component: SignupComponent },
+  { path: 'signup', component: SignupComponent },  
+  { path: 'profile', component: ProfileComponent }
   {
     path: 'car', loadChildren: () => CarsModule
   }
