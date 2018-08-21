@@ -13,7 +13,7 @@ export class CarDetailsComponent implements OnInit {
   car: Observable<CarModel>;
   id: string;
 
-  constructor(private carsService: CarsService ,private route: ActivatedRoute) {
+  constructor(private carsService: CarsService,private route: ActivatedRoute) {
     this.id = this.route.snapshot.params['id'];
   }
 

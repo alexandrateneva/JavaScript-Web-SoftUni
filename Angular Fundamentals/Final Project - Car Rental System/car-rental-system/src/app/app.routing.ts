@@ -16,7 +16,7 @@ const routes: Routes = [
   { path: 'contacts', component: ContactsComponent },  
   { path: 'signin', component: SigninComponent },
   { path: 'signup', component: SignupComponent },  
-  { path: 'profile', component: ProfileComponent }
+  { path: 'profile', component: ProfileComponent },
   {
     path: 'car', loadChildren: () => CarsModule
   }

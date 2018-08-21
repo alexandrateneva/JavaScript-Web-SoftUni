@@ -1,20 +1,25 @@
 <div *ngIf="car | async as c" class="container">
-    <div class="row space-top">
+    <!-- <div class="row space-top">
         <div class="col-md-12">
-            <h1>Car Details</h1>
+            <h1 class="text-center space-top"> </h1>
         </div>
-    </div>
-    <div class="row space-top">
-        <div class="col-md-4">
-            <div class="card text-white bg-primary">
-                <div class="card-body">
-                    <blockquote class="card-blockquote">
-                        <img src="{{c.imageUrl}}" />
-                    </blockquote>
+    </div> -->
+    <div class="row top-space">
+        <div class="col-md-8">
+            <div class="card flex-row flex-wrap text-white bg-primary">                    
+                <div class="card-header border-0">
+                    <img src="{{c.imageUrl}}" />  
                 </div>
+                <div class="card-block px-5">                    
+                    <h1 class="text-white space">Rating</h1>
+                    <hr class="rate-hr">
+                    <app-star-rating></app-star-rating> 
+                </div> 
             </div>
         </div>
         <div class="col-md-4">
+            <h1>Specifications</h1>
+            <hr>
             <p>Make: {{c.make}}</p>
             <p>Model: {{c.model}}</p>
             <p>Year: {{c.year}}</p>

@@ -13,7 +13,7 @@ export class SignupComponent implements OnInit {
   errorMsg: string;
 
   constructor(private authService: AuthService) {
-    this.model = new SignupModel('', '', '', '', 0);
+    this.model = new SignupModel('', '', '', '', '', 0);
   }
 
   signup() {

@@ -1,0 +1,25 @@
+<div class="container text-center">
+  <div class="row space-top">
+    <div class="col-md-12">
+      <h1>All Rented Cars</h1>
+    </div>
+  </div>
+  <div *ngIf="rents" class="row space-top">
+    <div [@list] *ngFor="let r of rents" class="col-md-3">
+      <div class="card text-white bg-primary">
+        <div class="card-body">
+          <img src="{{r.car.imageUrl}}">
+          <div>
+            <h5 class="card-title space">{{r.car.make}} {{r.car.model}}</h5>
+            <p>Period: {{r.startDate | date:'dd.MM.yyyy'}} - {{r.endDate | date:'dd.MM.yyyy'}}</p>
+            <p>User: {{r.user.firstName}} {{r.user.lastName}}, {{r.user.email}}</p>
+            <p>Total Sum: {{r.totalSum}} BGN</p>
+            <a (click)="deleteItem(r._id)" class="btn btn-danger">Delete</a>
+          </div>
+        </div>
+      </div>
+      <br />
+    </div>
+  </div>
+  <div *ngIf="rents && rents.length === 0"><i>There are no rented cars.</i></div>
+</div>

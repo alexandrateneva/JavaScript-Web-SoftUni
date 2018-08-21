@@ -12,7 +12,7 @@ export class CarCreateComponent implements OnInit {
   errorMsg: string;
 
   constructor(private carsService: CarsService) {
-    this.bindingModel = new CreateCarModel('', '', '', 1980, '', '', 10);
+    this.bindingModel = new CreateCarModel('', '', '', 1980, '', '', 10, []);
   }
 
   create() {

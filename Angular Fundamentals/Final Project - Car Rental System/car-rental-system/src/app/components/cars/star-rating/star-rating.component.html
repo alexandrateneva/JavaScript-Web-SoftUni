@@ -1,0 +1,31 @@
+<div class="space text-center">
+  <star-rating-comp   
+    [starType]="'svg'" 
+    [disabled]="true"
+    [labelVisible]="true"
+    [labelText]="'Total Rating'"
+    [labelPosition]="'top'"
+    [size]="'medium'"
+    [rating]="rating">                             
+  </star-rating-comp>  
+   <br/>
+   <br/>
+  <star-rating-comp   
+    [starType]="'svg'" 
+    [hoverEnabled]="true"
+    [labelVisible]="true"
+    [labelText]="'Your Rating'"
+    [labelPosition]="'top'"
+    [size]="'medium'"
+    [rating]="yourRating"
+    (onClick)="onClick($event)" 
+    (onRatingChange)="onRatingChange($event)">                             
+  </star-rating-comp>
+
+  <!-- <p>Total rate: {{totalRating | json}}</p>
+  <p>Your rate: {{yourRating | json}}</p>
+
+  <p>onHoverRatingChangeResult: {{onHoverRatingChangeResult | json}}</p>
+  <p>onClickResult: {{onClickResult | json}}</p>
+  <p>onRatingChangeResult: {{onRatingChangeResult | json}}</p> -->
+</div>

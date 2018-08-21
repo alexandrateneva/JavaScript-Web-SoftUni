@@ -1,3 +1,5 @@
+import { VoteModel } from "./vote.model";
+
 export class CarModel {
     constructor(
         public _id: string,
@@ -7,6 +9,7 @@ export class CarModel {
         public year: number,
         public fuelType: string,
         public engine: string,
-        public pricePerDay: number
+        public pricePerDay: number,
+        public votes: Array<VoteModel>
     ) { }
 }

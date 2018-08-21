@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { CustomFormsModule } from 'ng2-validation';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
+import { StarRatingModule } from 'angular-star-rating';
 
 import { CarsRoutingModule } from './cars-routing.module';
 import { CarsService } from '../services/cars.service';
@@ -16,6 +17,7 @@ import { CarEditComponent } from '../../components/cars/car-edit/car-edit.compon
 import { CarRentComponent } from '../../components/cars/car-rent/car-rent.component';
 import { NgbdDatepickerRange } from '../../components/cars/datepicker-range/datepicker-range.component';
 import { ListAllRentedCarsComponent } from '../../components/cars/list-all-rented-cars/list-all-rented-cars.component';
+import { StarRatingComponent } from '../../components/cars/star-rating/star-rating.component';
 
 @NgModule({
     declarations: [
@@ -25,13 +27,15 @@ import { ListAllRentedCarsComponent } from '../../components/cars/list-all-rente
         CarEditComponent,
         CarRentComponent,
         NgbdDatepickerRange,
-        ListAllRentedCarsComponent
+        ListAllRentedCarsComponent,
+        StarRatingComponent
     ],
     imports: [
         CommonModule,
         FormsModule,
         NgbModule.forRoot(),
         ConfirmationPopoverModule.forRoot(),
+        StarRatingModule,
         CustomFormsModule,
         CarsRoutingModule
     ],
