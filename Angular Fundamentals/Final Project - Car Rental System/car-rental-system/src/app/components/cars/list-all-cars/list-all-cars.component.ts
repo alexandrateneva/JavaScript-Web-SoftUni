@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner'; 
 import { Observable } from 'rxjs';
 import { CarModel } from '../../../core/models/cars/car.model';
 import { CarsService } from '../../../core/services/cars.service';
@@ -13,16 +14,21 @@ import { deteleAnimation } from '../delete-car.animation';
   animations: deteleAnimation
 })
 export class ListAllCarsComponent implements OnInit {
-  cars: CarModel[];
+  cars: CarModel[];  
+  pageSize: number = 3;
+  currentPage: number = 1;
 
   constructor(
     private carsService: CarsService,
     private authService: AuthService,
-    private toastr: ToastrService) { }
+    private toastr: ToastrService,
+    private spinnerService: Ng4LoadingSpinnerService) { }
 
   ngOnInit() {
+    this.spinnerService.show();
     this.carsService.getAll().subscribe(data => {
-      this.cars = data;
+      this.cars = data;      
+      this.spinnerService.hide();
     });
   }
 
@@ -31,5 +37,9 @@ export class ListAllCarsComponent implements OnInit {
       this.cars = this.cars.filter(f => f._id !== id);
       this.toastr.success('Car deleted!', 'Warning!');
     })
+  }
+
+  changePage(page) {
+    this.currentPage = page;
   }
 }

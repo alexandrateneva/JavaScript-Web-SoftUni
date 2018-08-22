@@ -5,6 +5,7 @@ import { CustomFormsModule } from 'ng2-validation';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 import { StarRatingModule } from 'angular-star-rating';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 import { CarsRoutingModule } from './cars-routing.module';
 import { CarsService } from '../services/cars.service';
@@ -37,7 +38,8 @@ import { StarRatingComponent } from '../../components/cars/star-rating/star-rati
         ConfirmationPopoverModule.forRoot(),
         StarRatingModule,
         CustomFormsModule,
-        CarsRoutingModule
+        CarsRoutingModule,
+        NgxPaginationModule
     ],
     providers: [
         CarsService,

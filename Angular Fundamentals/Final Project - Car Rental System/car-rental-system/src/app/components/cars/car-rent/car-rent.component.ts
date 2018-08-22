@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
+import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { CarModel } from '../../../core/models/cars/car.model';
 import { CreateRentModel } from '../../../core/models/cars/create-rent.model';
 import { AuthService } from '../../../core/services/auth.service';
@@ -30,14 +31,17 @@ export class CarRentComponent implements OnInit {
     private rentService: RentService,
     private toastr: ToastrService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private spinnerService: Ng4LoadingSpinnerService
   ) {
     this.carId = this.route.snapshot.params['id'];
   }
 
   ngOnInit() {
+    this.spinnerService.show();
     this.carsService.getDetails(this.carId).subscribe(data => {
       this.car = data;
+      this.spinnerService.hide();
     });
   }
 

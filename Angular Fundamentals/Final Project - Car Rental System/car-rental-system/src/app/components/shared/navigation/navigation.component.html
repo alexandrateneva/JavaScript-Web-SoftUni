@@ -7,14 +7,14 @@
 
   <div class="collapse navbar-collapse" id="navbarColor01">
       <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
+          <li *ngIf="authService.isAdmin()" class="nav-item">
             <a class="nav-link" routerLink="/car/create">Create Car</a>
           </li>
-          <li class="nav-item">
+          <li *ngIf="authService.isAdmin()" class="nav-item">
               <a class="nav-link" routerLink="/rented">Rents</a>
             </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/car/all">Cars</a>
+          <li *ngIf="authService.isAuthenticated()" class="nav-item">
+            <a class="nav-link" routerLink="/car/all">Catalog</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" routerLink="/about">About</a>

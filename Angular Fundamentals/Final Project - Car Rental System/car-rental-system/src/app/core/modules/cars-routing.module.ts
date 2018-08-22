@@ -6,14 +6,16 @@ import { CarDetailsComponent } from '../../components/cars/car-details/car-detai
 import { CarEditComponent } from '../../components/cars/car-edit/car-edit.component';
 import { CarRentComponent } from '../../components/cars/car-rent/car-rent.component';
 import { ListAllRentedCarsComponent } from '../../components/cars/list-all-rented-cars/list-all-rented-cars.component';
+import { AdminGuard } from '../guards/admin.guard';
+import { AuthGuard } from '../guards/auth.guard';
 
 const carsRoutes: Routes = [
-    { path: 'create', component: CarCreateComponent },
-    { path: 'all', component: ListAllCarsComponent },
-    { path: 'details/:id', component: CarDetailsComponent },
-    { path: 'edit/:id', component: CarEditComponent },
-    { path: 'rent/:id', component: CarRentComponent },
-    { path: 'rented', component: ListAllRentedCarsComponent }
+    { path: 'create', canActivate: [AdminGuard], component: CarCreateComponent },
+    { path: 'all', canActivate: [AuthGuard], component: ListAllCarsComponent },
+    { path: 'details/:id', canActivate: [AuthGuard], component: CarDetailsComponent },
+    { path: 'edit/:id', canActivate: [AdminGuard], component: CarEditComponent },
+    { path: 'rent/:id', canActivate: [AuthGuard], component: CarRentComponent },
+    { path: 'rented', canActivate: [AdminGuard], component: ListAllRentedCarsComponent }
 ]
 
 @NgModule({

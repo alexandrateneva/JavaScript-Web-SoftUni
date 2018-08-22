@@ -5,7 +5,11 @@
     </div>
   </div>
   <div *ngIf="rents" class="row space-top">
-    <div [@list] *ngFor="let r of rents" class="col-md-3">
+    <div [@list] *ngFor="let r of rents | paginate: { 
+      id: 'rents',
+      itemsPerPage: pageSize,
+      currentPage: currentPage}"
+      class="col-md-3">
       <div class="card text-white bg-primary">
         <div class="card-body">
           <img src="{{r.car.imageUrl}}">
@@ -21,5 +25,21 @@
       <br />
     </div>
   </div>
+  
+  <div class="row justify-content-md-center text-center">
+      <pagination-controls 
+        id="rents"
+        (pageChange)="changePage($event)"
+        maxSize="9"
+        directionLinks="true"
+        autoHide="true"
+        previousLabel="Previous"
+        nextLabel="Next"
+        screenReaderPaginationLabel="Pagination"
+        screenReaderPageLabel="page"
+        screenReaderCurrentLabel="You're on page">
+      </pagination-controls>
+    </div>
+    
   <div *ngIf="rents && rents.length === 0"><i>There are no rented cars.</i></div>
 </div>

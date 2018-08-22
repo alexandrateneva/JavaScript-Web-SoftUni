@@ -1,9 +1,4 @@
-<div *ngIf="car | async as c" class="container">
-    <!-- <div class="row space-top">
-        <div class="col-md-12">
-            <h1 class="text-center space-top"> </h1>
-        </div>
-    </div> -->
+<div *ngIf="car as c" class="container">
     <div class="row top-space">
         <div class="col-md-8">
             <div class="card flex-row flex-wrap text-white bg-primary">                    
@@ -25,7 +20,7 @@
             <p>Year: {{c.year}}</p>
             <p>Fuel Type: {{c.fuelType}}</p>
             <p>Engine: {{c.engine}}</p>
-            <p>Power Output: {{c.powerOutput}}</p>            
+            <p>Power Output: {{c.powerOutput}} hp</p>            
             <p>Price per Day: {{c.pricePerDay}} BGN</p>
             <a routerLink="/car/rent/{{c._id}}" class="btn btn-info btn-lg btn-block">Want to Rent</a>
         </div>

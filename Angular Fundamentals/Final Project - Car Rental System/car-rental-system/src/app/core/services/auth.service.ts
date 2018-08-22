@@ -31,8 +31,8 @@ export class AuthService {
 
     isAdmin(): boolean {
         let id = localStorage.getItem('id');
-        let username = localStorage.getItem('username');
-        return id === '' && username === '';
+        let username = localStorage.getItem('user');
+        return id === '5b7d7485fbf445513bc86427' && username === 'admin';
     }
 
     getUserById(id: string) {

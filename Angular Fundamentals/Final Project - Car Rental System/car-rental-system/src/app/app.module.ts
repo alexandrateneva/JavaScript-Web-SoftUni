@@ -3,6 +3,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
+import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
 
 import { AuthModule } from './core/modules/auth.module';
 import { SharedModule } from './core/modules/shared.module';
@@ -22,6 +23,7 @@ import { ErrorInterceptor } from './core/interceptors/error.interceptor';
     BrowserAnimationsModule,
     AppRoutingModule,
     ToastrModule.forRoot(),
+    Ng4LoadingSpinnerModule.forRoot(),
     AuthModule,
     SharedModule,           
     CarsModule

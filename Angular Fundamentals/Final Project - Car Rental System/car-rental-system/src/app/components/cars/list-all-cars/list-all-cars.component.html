@@ -5,9 +5,12 @@
           <p>Select car from the catalog to view details.</p>
       </div>
   </div>
-    <div *ngIf="cars" class="row space-top">
-       <div [@list]  *ngFor="let c of cars"
-            class="col-md-4">
+  <div *ngIf="cars" class="row space-top">
+       <div [@list]  *ngFor="let c of cars | paginate: { 
+        id: 'cars',
+        itemsPerPage: pageSize,
+        currentPage: currentPage}"
+        class="col-md-4">
            <div class="card text-white bg-primary">
                <div class="card-body">
                    <blockquote class="card-blockquote">
@@ -16,13 +19,28 @@
                        <p>{{c.model}}</p>
                        <div class="pull-right">
                           <a routerLink="/car/details/{{c._id}}" class="btn btn-info">Details</a>
-                          <a (click)="deleteItem(c._id)" class="btn btn-danger">Delete</a>
-                          <a routerLink="/car/edit/{{c._id}}" class="btn btn-success">Edit</a>
+                          <a *ngIf="authService.isAdmin()" (click)="deleteItem(c._id)" class="btn btn-danger">Delete</a>
+                          <a *ngIf="authService.isAdmin()" routerLink="/car/edit/{{c._id}}" class="btn btn-success">Edit</a>
                        </div>
                    </blockquote>
                </div>
            </div>
            <br />
        </div>
-    </div>
+  </div>
+
+  <div class="row justify-content-md-center text-center">
+       <pagination-controls 
+         id="cars"
+         (pageChange)="changePage($event)"
+         maxSize="9"
+         directionLinks="true"
+         autoHide="true"
+         previousLabel="Previous"
+         nextLabel="Next"
+         screenReaderPaginationLabel="Pagination"
+         screenReaderPageLabel="page"
+         screenReaderCurrentLabel="You're on page">
+       </pagination-controls>
+  </div>
 </div>

@@ -5,3 +5,14 @@ img {
 .space {
     margin-top: 10px;
 }
+
+.button-time{
+    font-size: 16px;
+    padding: 14px 40px;
+    width: 100%;
+}
+
+.disabled {
+    opacity: 0.8;
+    cursor: not-allowed;
+}

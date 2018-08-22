@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CustomFormsModule } from 'ng2-validation'
+import { NgxPaginationModule } from 'ngx-pagination';
 
 import { SignupComponent } from '../../components/authentication/signup/signup.component';
 import { SigninComponent } from '../../components/authentication/signin/signin.component';
@@ -20,7 +21,8 @@ import { AuthService } from '../services/auth.service';
         FormsModule,
         CommonModule,
         HttpClientModule,
-        CustomFormsModule
+        CustomFormsModule,
+        NgxPaginationModule
     ],
     providers: [
         AuthService
