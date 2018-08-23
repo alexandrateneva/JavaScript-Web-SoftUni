@@ -9,6 +9,7 @@ import { HomeComponent } from './components/shared/home/home.component';
 import { AboutComponent } from './components/shared/about/about.component';
 import { ContactsComponent } from './components/shared/contacts/contacts.component';
 import { ProfileComponent } from './components/authentication/profile/profile.component';
+import { NotFoundComponent } from './components/shared/not-found/not-found.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
@@ -20,7 +21,9 @@ const routes: Routes = [
   { path: 'profile', canActivate: [AuthGuard], component: ProfileComponent },
   {
     path: 'car', loadChildren: () => CarsModule
-  }
+  },
+  { path: '404', component: NotFoundComponent },
+  { path: '**', component: NotFoundComponent }
 ]
 
 @NgModule({

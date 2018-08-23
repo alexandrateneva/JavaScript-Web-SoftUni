@@ -1,3 +1,57 @@
 img {
     width: 300px;
 }
+
+.btn-action {
+    margin-left: 10px;
+    margin-top: 10px; 
+}
+
+.space {
+    margin-top: 15px;    
+    margin-left: 90px;
+}
+
+.search-box {
+    margin-top: 25px;    
+    margin-bottom: 15px;
+    width: 250px;
+}
+
+.search {
+    padding: 5px 0;
+    width: 230px;
+    height: 30px;
+    position: relative;
+    left: 0px;
+    float: left;
+    line-height: 22px;
+}
+
+.search input {
+    position: absolute;
+    width: 0px;
+    float: Left;
+    margin-left: 210px;
+    -webkit-transition: all 0.7s ease-in-out;
+    -moz-transition: all 0.7s ease-in-out;
+    -o-transition: all 0.7s ease-in-out;
+    transition: all 0.7s ease-in-out;
+    height: 30px;
+    line-height: 18px;
+    padding: 0 5px 0 2px;
+    border-radius:10px;
+}
+
+.search:hover input, .search input:focus {
+    width: 200px;
+    margin-left: 0px;
+}
+
+.search-btn {
+    height: 30px;
+    position: absolute;
+    right: 0;
+    top: 5px;
+    border-radius:1px;
+}

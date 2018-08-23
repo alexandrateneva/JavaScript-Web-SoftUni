@@ -16,3 +16,11 @@ img {
     opacity: 0.8;
     cursor: not-allowed;
 }
+
+.danger {
+    color: red;
+}
+
+.success{
+    color: green;
+}

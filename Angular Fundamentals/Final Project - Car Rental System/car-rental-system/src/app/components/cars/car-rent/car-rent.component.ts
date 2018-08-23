@@ -9,6 +9,7 @@ import { AuthService } from '../../../core/services/auth.service';
 import { CarsService } from '../../../core/services/cars.service';
 import { RentService } from '../../../core/services/rent.service';
 import { NgbdDatepickerRange } from '../datepicker-range/datepicker-range.component';
+import { Z_DEFAULT_COMPRESSION } from 'zlib';
 
 @Component({
   selector: 'app-car-rent',
@@ -18,7 +19,7 @@ import { NgbdDatepickerRange } from '../datepicker-range/datepicker-range.compon
 export class CarRentComponent implements OnInit {
   startDate: Date;
   endDate: Date;
-  period: number = 1;
+  period: number = 0;
   car: CarModel;
   carId: string;
 
@@ -48,6 +49,7 @@ export class CarRentComponent implements OnInit {
   changeDays(data): void {
     if (data.length === 1) {
       this.period = 1;
+      this.startDate = data[0];
     } else {
       this.startDate = data[0];
       this.endDate = data[1];
@@ -67,30 +69,33 @@ export class CarRentComponent implements OnInit {
   }
 
   rent() {
-    let userId = localStorage.getItem('id')
-    let car = {
-      id: this.car._id,
-      make: this.car.make,
-      model: this.car.model,
-      imageUrl: this.car.imageUrl
-    }
-    this.authService.getUserById(userId).subscribe(userInfo => {
-      let user = {
-        id: userInfo._id,
-        firstName: userInfo.firstName,
-        lastName: userInfo.lastName,
-        email: userInfo.email
+    if (!this.startDate) {
+      this.toastr.error('To rent must choose a period!', 'Warning!');
+    } else {
+      if (!this.endDate) {
+        this.endDate = this.startDate;
       }
-      if (!this.startDate && !this.endDate) {
-        this.startDate = new Date();
-        this.endDate = new Date();
+      let userId = localStorage.getItem('id')
+      let car = {
+        id: this.car._id,
+        make: this.car.make,
+        model: this.car.model,
+        imageUrl: this.car.imageUrl
       }
+      this.authService.getUserById(userId).subscribe(userInfo => {
+        let user = {
+          id: userInfo._id,
+          firstName: userInfo.firstName,
+          lastName: userInfo.lastName,
+          email: userInfo.email
+        }
 
-      let rentModel = new CreateRentModel(car, user, this.startDate, this.endDate, this.totalSum);
-      this.rentService.create(rentModel).subscribe(() => {
-        this.toastr.success('Car rented successful!', 'Success!');
-        this.router.navigate(['/home']);
-      });
-    })
+        let rentModel = new CreateRentModel(car, user, this.startDate, this.endDate, this.totalSum, true, true, false);
+        this.rentService.create(rentModel).subscribe(() => {
+          this.toastr.success('Car rented successful!', 'Success!');
+          this.router.navigate(['/profile']);
+        });
+      })
+    }
   }
 }

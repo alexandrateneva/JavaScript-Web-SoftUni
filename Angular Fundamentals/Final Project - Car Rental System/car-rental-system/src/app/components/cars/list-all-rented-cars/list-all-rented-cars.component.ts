@@ -16,7 +16,7 @@ import { RentModel } from '../../../core/models/cars/rent.model';
 })
 export class ListAllRentedCarsComponent implements OnInit {
   rents: Array<RentModel>;
-  pageSize: number = 4;
+  pageSize: number = 3;
   currentPage: number = 1;
 
   constructor(
@@ -27,14 +27,15 @@ export class ListAllRentedCarsComponent implements OnInit {
 
   ngOnInit() {
     this.spinnerService.show();
-    this.rentService.getAll().subscribe(data => {
+    this.rentService.getAllForAdmin().subscribe(data => {
       this.rents = data;
       this.spinnerService.hide();
     });
   }
 
   deleteItem(id) {
-    this.rentService.delete(id).subscribe(() => {
+    let current = this.rents.find(r => r._id === id);
+    this.rentService.hide(id, current, 'admin').subscribe(() => {
       this.rents = this.rents.filter(f => f._id !== id);
       this.toastr.success('Rent deleted!', 'Warning!');
     })
@@ -42,5 +43,13 @@ export class ListAllRentedCarsComponent implements OnInit {
 
   changePage(page) {
     this.currentPage = page;
+  }
+
+  reject(id) {
+    let current = this.rents.find(r => r._id === id);
+    let state = current.isRejected ? 'approved' : 'rejected';
+    this.rentService.reject(id, current).subscribe(() => {
+      this.toastr.success(`Rent ${state}!`, 'Warning!');
+    })
   }
 }

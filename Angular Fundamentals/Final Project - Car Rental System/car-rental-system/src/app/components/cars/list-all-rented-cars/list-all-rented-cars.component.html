@@ -9,7 +9,7 @@
       id: 'rents',
       itemsPerPage: pageSize,
       currentPage: currentPage}"
-      class="col-md-3">
+      class="col-md-4">
       <div class="card text-white bg-primary">
         <div class="card-body">
           <img src="{{r.car.imageUrl}}">
@@ -18,7 +18,9 @@
             <p>Period: {{r.startDate | date:'dd.MM.yyyy'}} - {{r.endDate | date:'dd.MM.yyyy'}}</p>
             <p>User: {{r.user.firstName}} {{r.user.lastName}}, {{r.user.email}}</p>
             <p>Total Sum: {{r.totalSum}} BGN</p>
-            <a (click)="deleteItem(r._id)" class="btn btn-danger">Delete</a>
+            <a (click)="deleteItem(r._id)" class="btn btn-danger button">Delete</a>
+            <a *ngIf="!r.isRejected" (click)="reject(r._id)" class="btn btn-danger">Reject</a>     
+            <a *ngIf="r.isRejected" (click)="reject(r._id)" class="btn btn-success">Approve</a>                               
           </div>
         </div>
       </div>

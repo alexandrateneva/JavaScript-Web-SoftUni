@@ -23,8 +23,12 @@
             or missing fuel. In lieu of a credit card, some companies require a large cash deposit. Some companies permit a debit card for deposits, 
             typically with proof of a round-trip travel ticket, e.g. an airline, bus, or train ticket.</li>      
     </ul>
-    <div class="text-center">
-      <h5>To see our cars, please first sign in!</h5>
-      <a class="btn btn-primary btn-md" routerLink="/signin" role="button">Sing in</a><br/>
+    <div *ngIf="!authService.isAuthenticated()" class="text-center">
+        <h5>To see our cars, please first sign in!</h5>
+        <a class="btn btn-primary btn-md" routerLink="/signin" role="button">Sing in</a>
+    </div>
+    <div *ngIf="authService.isAuthenticated()" class="text-center">
+        <h5>To see our cars, check out the catalog!</h5>
+        <a class="btn btn-primary btn-md" routerLink="/car/all" role="button">Catalog</a>
     </div>
 </div>

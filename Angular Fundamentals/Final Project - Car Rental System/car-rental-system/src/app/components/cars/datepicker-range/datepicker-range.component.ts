@@ -38,7 +38,7 @@ export class NgbdDatepickerRange implements OnInit {
     private rentService: RentService,
     private route: ActivatedRoute
   ) {
-    this.fromDate = calendar.getToday();
+    // this.fromDate = calendar.getToday();
 
     config.minDate = calendar.getToday();
     config.maxDate = { year: 2020, month: 12, day: 31 };
@@ -103,7 +103,7 @@ export class NgbdDatepickerRange implements OnInit {
         }
       }
       this.onDatePicked.emit([startDate, endDate]);
-    } 
+    }
   }
 
   isHovered = date => this.fromDate && !this.toDate && this.hoveredDate && after(date, this.fromDate) && before(date, this.hoveredDate);

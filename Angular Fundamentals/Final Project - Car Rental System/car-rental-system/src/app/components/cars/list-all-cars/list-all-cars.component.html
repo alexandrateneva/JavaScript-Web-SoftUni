@@ -1,9 +1,15 @@
 <div class="container text-center">
   <div class="row space-top">
-      <div class="col-md-12">
-          <h1>Our Cars</h1>
+      <div class="col-md-8 space">
+          <h1>Catalog</h1>
           <p>Select car from the catalog to view details.</p>
       </div>
+      <div class="col-md-3 search-box">
+            <form class="search" #form="ngForm" (submit)="search(form.value)">
+               <input type="text" class="form-control input-sm" maxlength="64" placeholder="Search by Make" name="make" ngModel/>
+               <button type="submit" class="btn btn-primary btn-sm search-btn">Search</button>
+            </form>
+        </div>
   </div>
   <div *ngIf="cars" class="row space-top">
        <div [@list]  *ngFor="let c of cars | paginate: { 
@@ -14,13 +20,13 @@
            <div class="card text-white bg-primary">
                <div class="card-body">
                    <blockquote class="card-blockquote">
-                       <img src="{{c.imageUrl}}" />
+                       <a routerLink="/car/details/{{c._id}}"><img src="{{c.imageUrl}}" /></a>                       
                        <p>{{c.make}}</p>
                        <p>{{c.model}}</p>
                        <div class="pull-right">
-                          <a routerLink="/car/details/{{c._id}}" class="btn btn-info">Details</a>
-                          <a *ngIf="authService.isAdmin()" (click)="deleteItem(c._id)" class="btn btn-danger">Delete</a>
-                          <a *ngIf="authService.isAdmin()" routerLink="/car/edit/{{c._id}}" class="btn btn-success">Edit</a>
+                          <a routerLink="/car/details/{{c._id}}" class="btn btn-info btn-action">Details</a>
+                          <a *ngIf="authService.isAdmin()" (click)="deleteItem(c._id)" class="btn btn-danger btn-action">Delete</a>
+                          <a *ngIf="authService.isAdmin()" routerLink="/car/edit/{{c._id}}" class="btn btn-success btn-action">Edit</a>
                        </div>
                    </blockquote>
                </div>
@@ -42,5 +48,10 @@
          screenReaderPageLabel="page"
          screenReaderCurrentLabel="You're on page">
        </pagination-controls>
+  </div>
+  
+  <div *ngIf="cars && cars.length === 0">
+      <hr>
+      <i>There are no cars with these make.</i>
   </div>
 </div>

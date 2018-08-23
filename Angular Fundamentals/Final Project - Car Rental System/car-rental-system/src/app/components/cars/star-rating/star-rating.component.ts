@@ -69,12 +69,14 @@ export class StarRatingComponent implements OnInit {
     this.yourRating = newRating;
     this.car.votes.find(v => v.userId === userId).vote = newRating;
     this.updateTotalRating();
-    if (!this.isFirst) {
+
+    if (this.hasVoted && this.isFirst) {
+      this.isFirst = false;
+    } else {
       this.carsService.edit(this.car._id, this.car).subscribe(() => {
         this.toastr.success('You rate the car successful!', 'Success!');
       });
     }
-    this.isFirst = false;
   };
 
   updateTotalRating(): void {

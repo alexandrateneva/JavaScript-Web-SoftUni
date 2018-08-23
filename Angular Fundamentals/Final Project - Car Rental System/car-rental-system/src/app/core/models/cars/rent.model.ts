@@ -15,6 +15,9 @@ export class RentModel {
         },
         public startDate: Date,
         public endDate: Date,
-        public totalSum: number
+        public totalSum: number,
+        public visibleToAdmin: boolean,
+        public visibleToUser: boolean,
+        public isRejected: boolean      
     ) { }
 }

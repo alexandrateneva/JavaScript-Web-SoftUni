@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner'; 
+import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { Observable } from 'rxjs';
 import { CarModel } from '../../../core/models/cars/car.model';
 import { CarsService } from '../../../core/services/cars.service';
@@ -14,7 +14,8 @@ import { deteleAnimation } from '../delete-car.animation';
   animations: deteleAnimation
 })
 export class ListAllCarsComponent implements OnInit {
-  cars: CarModel[];  
+  private allCars: CarModel[];
+  cars: CarModel[];
   pageSize: number = 3;
   currentPage: number = 1;
 
@@ -26,8 +27,9 @@ export class ListAllCarsComponent implements OnInit {
 
   ngOnInit() {
     this.spinnerService.show();
-    this.carsService.getAll().subscribe(data => {
-      this.cars = data;      
+    this.carsService.getAll().subscribe(data => {      
+      this.cars = data;
+      this.allCars = data;
       this.spinnerService.hide();
     });
   }
@@ -41,5 +43,10 @@ export class ListAllCarsComponent implements OnInit {
 
   changePage(page) {
     this.currentPage = page;
+  }
+
+  search(search) {
+    this.cars = this.allCars;
+    this.cars = this.cars.filter(c => c.make.toLowerCase().indexOf(search.make.toLowerCase()) >= 0);
   }
 }

@@ -25,7 +25,9 @@
               <h5 class="card-title space">{{r.car.make}} {{r.car.model}}</h5>
               <p>Period: {{r.startDate | date:'dd.MM.yyyy'}} - {{r.endDate | date:'dd.MM.yyyy'}}</p>
               <p>Total Sum: {{r.totalSum}} BGN</p>
-              <a *ngIf="isPast(r.endDate)" (click)="deleteItem(r._id)" class="btn btn-danger">Delete</a>
+              <h4 *ngIf="r.isRejected" class="danger">Rejected</h4> 
+              <h4 *ngIf="!r.isRejected" class="success">Approved</h4>                       
+              <a *ngIf="isPast(r.endDate)" (click)="deleteItem(r._id)" class="btn btn-danger">Delete</a>         
             </div>
           </div>
         </div>

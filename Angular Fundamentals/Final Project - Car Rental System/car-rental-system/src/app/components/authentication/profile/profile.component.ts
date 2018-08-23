@@ -38,7 +38,8 @@ export class ProfileComponent implements OnInit {
   }
 
   deleteItem(id) {
-    this.rentService.delete(id).subscribe(() => {
+    let current = this.rents.find(r => r._id === id);
+    this.rentService.hide(id, current, 'user').subscribe(() => {
       this.rents = this.rents.filter(f => f._id !== id);
       this.pastRents = this.pastRents.filter(f => f._id !== id);
       this.toastr.success('Rent deleted!', 'Warning!');
