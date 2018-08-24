@@ -28,11 +28,11 @@ The goal of the project is to represent a car rental system with added functiona
 
 ## Start 
 
-	### Development server - navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+ Development server - navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 	$ ng serve
 
-	### Build - the build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+ Build - the build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
 	$ ng build
 	
