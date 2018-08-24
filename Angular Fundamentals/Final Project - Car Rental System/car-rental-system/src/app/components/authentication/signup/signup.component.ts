@@ -17,7 +17,7 @@ export class SignupComponent implements OnInit {
     private authService: AuthService,
     private spinnerService: Ng4LoadingSpinnerService
   ) {
-    this.model = new SignupModel('', '', '', '', '', 0);
+    this.model = new SignupModel('', '', '', '', '', '', 0);
   }
 
   signup() {

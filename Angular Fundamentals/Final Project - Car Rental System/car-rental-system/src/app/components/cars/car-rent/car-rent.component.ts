@@ -9,7 +9,6 @@ import { AuthService } from '../../../core/services/auth.service';
 import { CarsService } from '../../../core/services/cars.service';
 import { RentService } from '../../../core/services/rent.service';
 import { NgbdDatepickerRange } from '../datepicker-range/datepicker-range.component';
-import { Z_DEFAULT_COMPRESSION } from 'zlib';
 
 @Component({
   selector: 'app-car-rent',

@@ -8,6 +8,7 @@ export class CreateCarModel {
         public year: number,
         public fuelType: string,
         public engine: string,
+        public powerOutput: number,
         public pricePerDay: number,
         public votes: Array<VoteModel>
     ) { }

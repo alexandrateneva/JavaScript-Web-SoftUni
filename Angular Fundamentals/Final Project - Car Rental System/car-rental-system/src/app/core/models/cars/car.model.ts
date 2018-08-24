@@ -9,6 +9,7 @@ export class CarModel {
         public year: number,
         public fuelType: string,
         public engine: string,
+        public powerOutput: number,
         public pricePerDay: number,
         public votes: Array<VoteModel>
     ) { }
