@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { CreateCarModel } from '../models/cars/create-car.model';
 import { CarModel } from '../models/cars/car.model';
+import { RentService } from './rent.service';
 
 const appKey = "kid_SyD_v-eLQ";
 const appSecret = "805b3f15a06d4cbe979443953f831283";
@@ -12,25 +13,25 @@ const currentCarUrl = `https://baas.kinvey.com/appdata/${appKey}/cars/`;
 
 @Injectable()
 export class CarsService {
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient, private rentService: RentService) { }
 
     create(carModel: CreateCarModel) {
         return this.http.post(createCarUrl, JSON.stringify(carModel))
     }
 
-    getAll(){
+    getAll() {
         return this.http.get<CarModel[]>(getAllCarsUrl);
     }
 
-    delete(id: string){
+    delete(id: string) {
         return this.http.delete(currentCarUrl + id);
     }
 
-    getDetails(id : string){
+    getDetails(id: string) {
         return this.http.get<CarModel>(currentCarUrl + id);
     }
-    
-    edit(id : string, carModel : CarModel){
+
+    edit(id: string, carModel: CarModel) {
         return this.http.put(currentCarUrl + id, carModel);
     }
 }
